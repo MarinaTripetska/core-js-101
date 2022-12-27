@@ -211,11 +211,10 @@ function getTail(arr, n) {
  */
 function toCsvText(arr) {
   return arr.reduce(
-    (acc, cur, i, array) =>
-      i !== array.length - 1
-        ? `${acc}${String(cur).trim()}\n`
-        : `${acc}${String(cur).trim()}`,
-    ''
+    (acc, cur, i, array) => (i !== array.length - 1
+      ? `${acc}${String(cur).trim()}\n`
+      : `${acc}${String(cur).trim()}`),
+    '',
   );
 }
 
@@ -287,7 +286,7 @@ function getSecondItems(arr) {
 function propagateItemsByPositionIndex(arr) {
   return arr.reduce(
     (acc, cur, i) => acc.concat([...Array(i + 1)].map(() => cur)),
-    []
+    [],
   );
 }
 
@@ -345,7 +344,7 @@ function get3TopItems(arr) {
 function getPositivesCount(arr) {
   return arr.reduce(
     (acc, cur) => (typeof cur === 'number' && cur > 0 ? acc + 1 : acc),
-    0
+    0,
   );
 }
 
@@ -498,9 +497,7 @@ function sortCitiesArray(arr) {
  */
 function getIdentityMatrix(n) {
   const matrix = Array.from({ length: n });
-  return matrix.map((_, inx) =>
-    Array.from({ length: n }).map((__, i) => (i === inx ? 1 : 0))
-  );
+  return matrix.map((_, inx) => Array.from({ length: n }).map((__, i) => (i === inx ? 1 : 0)));
 }
 
 /**
