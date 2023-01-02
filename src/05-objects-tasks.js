@@ -19,8 +19,12 @@
  *    console.log(r.height);      // => 20
  *    console.log(r.getArea());   // => 200
  */
-function Rectangle(/* width, height */) {
-  throw new Error('Not implemented');
+function Rectangle(width, height) {
+  this.width = width;
+  this.height = height;
+  this.getArea = function () {
+    return this.height * this.width;
+  };
 }
 
 /**
@@ -33,8 +37,8 @@ function Rectangle(/* width, height */) {
  *    [1,2,3]   =>  '[1,2,3]'
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
-function getJSON(/* obj */) {
-  throw new Error('Not implemented');
+function getJSON(obj) {
+  return JSON.stringify(obj);
 }
 
 /**
@@ -48,8 +52,8 @@ function getJSON(/* obj */) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  return Object.setPrototypeOf(JSON.parse(json), proto);
 }
 
 /**
@@ -105,7 +109,14 @@ function fromJSON(/* proto, json */) {
  *
  *  For more examples see unit tests.
  */
-
+// Там подсказка в комментариях что эта функция это просто обёртка и нужно сделать свой класс.
+//  И потом этот класс в каждом методе обёртки вызывать как новый инстанс через new.
+//   В самом классе в конструкторе у меня например строка в которой собирается селектор
+//   и методы аналогичные обёртке которые добавляют в эту строку нужный символ + валью.
+//   А метод стрингифай просто возвращает эту строку.
+// А ну и ещё чтоб все методы чейнились нужно возвращать контекст this.
+//   Ну и там по условию ещё проверки нужно добавить что element,
+//   id и pseudo element используется только 1 раз и все в правильном порядке.
 const cssSelectorBuilder = {
   element(/* value */) {
     throw new Error('Not implemented');
